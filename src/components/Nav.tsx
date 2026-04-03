@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import BrandLogo from "./BrandLogo";
 
 const navItems = [
-  { label: "Leistungen", href: "#leistungen" },
-  { label: "Über uns", href: "#ueber-uns" },
-  { label: "Ergebnisse", href: "#ergebnisse" },
+  { label: "Leistungen", href: "/#leistungen" },
+  { label: "Über uns", href: "/#ueber-uns" },
+  { label: "Ergebnisse", href: "/#ergebnisse" },
 ];
 
 export default function Nav() {
@@ -29,11 +29,10 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="#">
-            <BrandLogo textClass={scrolled ? "text-blue-dark" : "text-white"} />
+          <a href="/">
+            <BrandLogo textClass={scrolled ? "text-brand-dark" : "text-white"} />
           </a>
 
-          {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <a
@@ -41,7 +40,7 @@ export default function Nav() {
                 href={item.href}
                 className={`text-sm font-medium transition-colors ${
                   scrolled
-                    ? "text-gray-600 hover:text-blue"
+                    ? "text-gray-600 hover:text-brand"
                     : "text-white/80 hover:text-white"
                 }`}
               >
@@ -49,27 +48,26 @@ export default function Nav() {
               </a>
             ))}
             <a
-              href="#kontakt"
-              className="px-6 py-2.5 text-sm font-semibold text-blue-dark bg-gold hover:bg-gold-light rounded-full transition-all hover:shadow-lg hover:shadow-gold/25"
+              href="/funnel"
+              className="px-6 py-2.5 text-sm font-semibold text-white bg-brand hover:bg-brand-light rounded-full transition-all"
             >
               Erstgespräch sichern
             </a>
           </div>
 
-          {/* Mobile */}
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden flex flex-col gap-1.5 p-2"
             aria-label="Menü"
           >
             <span
-              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-blue-dark" : "bg-white"} ${open ? "rotate-45 translate-y-2" : ""}`}
+              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-brand-dark" : "bg-white"} ${open ? "rotate-45 translate-y-2" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-blue-dark" : "bg-white"} ${open ? "opacity-0" : ""}`}
+              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-brand-dark" : "bg-white"} ${open ? "opacity-0" : ""}`}
             />
             <span
-              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-blue-dark" : "bg-white"} ${open ? "-rotate-45 -translate-y-2" : ""}`}
+              className={`block w-6 h-0.5 transition-all ${scrolled ? "bg-brand-dark" : "bg-white"} ${open ? "-rotate-45 -translate-y-2" : ""}`}
             />
           </button>
         </div>
@@ -81,15 +79,15 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-sm text-gray-600 hover:text-blue font-medium"
+                className="text-sm text-gray-600 hover:text-brand font-medium"
               >
                 {item.label}
               </a>
             ))}
             <a
-              href="#kontakt"
+              href="/funnel"
               onClick={() => setOpen(false)}
-              className="px-6 py-2.5 text-sm font-semibold text-blue-dark bg-gold rounded-full text-center"
+              className="px-6 py-2.5 text-sm font-semibold text-white bg-brand rounded-full text-center"
             >
               Erstgespräch sichern
             </a>

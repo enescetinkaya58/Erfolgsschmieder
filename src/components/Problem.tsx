@@ -32,10 +32,10 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section className="py-20 lg:py-28 bg-gray-50">
+    <section className="py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-4xl font-bold text-blue-dark tracking-tight">
+          <h2 className="font-serif text-3xl lg:text-4xl font-bold text-brand-dark tracking-tight">
             Kommt Ihnen das bekannt vor?
           </h2>
           <p className="mt-4 text-gray-500 text-lg">
@@ -48,12 +48,12 @@ export default function Problem() {
           {problems.map((p) => (
             <div
               key={p.title}
-              className="bg-white rounded-2xl p-8 border border-gray-100 hover:border-red-200 hover:shadow-lg transition-all duration-300"
+              className="bg-surface rounded-2xl p-8 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-red-50 text-red-400 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-xl bg-brand/5 text-brand flex items-center justify-center">
                 {p.icon}
               </div>
-              <h3 className="mt-5 text-lg font-bold text-blue-dark">
+              <h3 className="mt-5 text-lg font-bold text-brand-dark">
                 {p.title}
               </h3>
               <p className="mt-2 text-sm text-gray-500 leading-relaxed">
@@ -64,10 +64,10 @@ export default function Problem() {
         </div>
 
         <div className="mt-14 text-center">
-          <p className="text-lg text-blue-dark font-medium">
+          <p className="text-lg text-brand-dark font-medium">
             Das muss nicht so bleiben.
           </p>
-          <ChevronDownIcon className="w-6 h-6 text-gold mx-auto mt-4 animate-bounce" />
+          <ChevronDownIcon className="w-6 h-6 text-brand mx-auto mt-4 animate-bounce" />
         </div>
       </div>
     </section>

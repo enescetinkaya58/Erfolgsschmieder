@@ -50,25 +50,25 @@ const services = [
 
 export default function Leistungen() {
   return (
-    <section id="leistungen" className="py-20 lg:py-28 bg-white">
+    <section id="leistungen" className="py-20 lg:py-28 bg-surface">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeading
-          label="So helfen wir Ihnen"
-          title="Von Problem zu Ergebnis"
-          subtitle="Jede Zusammenarbeit beginnt mit Ihrem größten Engpass – und endet mit messbarem Fortschritt."
+          label="Leistungen"
+          title="Alles was Sie brauchen"
+          subtitle="Eine Beratung. Alle Lösungen. Für Ihren Erfolg."
         />
 
         <div className="mt-16 grid md:grid-cols-2 gap-6">
           {services.map((s) => (
             <div
               key={s.title}
-              className="group relative bg-white rounded-2xl p-8 border border-gray-100 hover:border-gold/30 hover:shadow-xl hover:shadow-gold/5 transition-all duration-300"
+              className="group bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg transition-all duration-300"
             >
-              <div className="w-14 h-14 rounded-2xl bg-blue/5 text-blue group-hover:bg-gold/10 group-hover:text-gold flex items-center justify-center transition-colors duration-300">
+              <div className="w-14 h-14 rounded-2xl bg-brand/5 text-brand group-hover:bg-brand group-hover:text-white flex items-center justify-center transition-colors duration-300">
                 {s.icon}
               </div>
 
-              <h3 className="mt-6 text-xl font-bold text-blue-dark">
+              <h3 className="mt-6 text-xl font-bold text-brand-dark">
                 {s.title}
               </h3>
 
@@ -76,12 +76,11 @@ export default function Leistungen() {
                 {s.description}
               </p>
 
-              {/* Ergebnis-Badge */}
-              <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-green-50 border border-green-100">
-                <svg className="w-4 h-4 text-green-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <div className="mt-5 inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-brand/5">
+                <svg className="w-4 h-4 text-brand shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
-                <span className="text-sm text-green-700 font-medium">
+                <span className="text-sm text-brand font-medium">
                   {s.result}
                 </span>
               </div>

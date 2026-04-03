@@ -1,3 +1,4 @@
+import Image from "next/image";
 import SectionHeading from "./SectionHeading";
 
 const team = [
@@ -7,7 +8,6 @@ const team = [
     image: "/images/team-jerome.jpg",
     description:
       "Mein Ziel ist es, Sie in souveräner Selbstführung zu entwickeln. Die Klarheit und Entscheidungsstärke, die Sie dadurch gewinnen, führt direkt zu messbaren Leistungsverbesserungen und nachhaltigem Umsatzwachstum.",
-    featured: true,
   },
   {
     name: "E. Cetinkaya",
@@ -41,34 +41,27 @@ export default function Team() {
           {team.map((member) => (
             <div
               key={member.name}
-              className={`bg-gray-50 rounded-2xl overflow-hidden ${
-                member.featured ? "md:row-span-1" : ""
-              }`}
+              className="bg-surface rounded-2xl overflow-hidden"
             >
-              {/* Bild-Platzhalter – ersetze mit echtem Foto */}
-              <div className="aspect-[4/5] bg-gradient-to-br from-gray-200 to-gray-100 relative overflow-hidden">
-                {/* Wenn Bild vorhanden:
-                <Image src={member.image} alt={member.name} fill className="object-cover" /> */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-blue/10 flex items-center justify-center mb-2">
-                      <span className="text-blue text-2xl font-bold">
-                        {member.name.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
-                    <p className="text-xs text-gray-400">Foto einfügen</p>
-                    <p className="text-[10px] text-gray-300">{member.image}</p>
-                  </div>
-                </div>
+              <div className="aspect-[4/5] relative overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  className="object-cover object-top"
+                  quality={100}
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
               </div>
 
               <div className="p-6">
-                <h3 className="text-lg font-bold text-blue-dark">
+                <h3 className="text-lg font-bold text-brand-dark">
                   {member.name}
                 </h3>
                 <p className="text-sm text-gray-500">{member.role}</p>
                 {member.subtitle && (
-                  <p className="text-sm text-gold font-medium mt-1">
+                  <p className="text-sm text-brand font-medium mt-1">
                     {member.subtitle}
                   </p>
                 )}

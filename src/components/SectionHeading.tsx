@@ -13,12 +13,12 @@ export default function SectionHeading({
 }) {
   return (
     <div className={`max-w-3xl ${centered ? "text-center mx-auto" : ""}`}>
-      <p className="text-gold font-semibold tracking-widest uppercase text-sm mb-3">
+      <p className="text-brand font-semibold tracking-widest uppercase text-sm mb-3">
         {label}
       </p>
       <h2
-        className={`text-3xl lg:text-5xl font-bold tracking-tight ${
-          light ? "text-white" : "text-blue-dark"
+        className={`font-serif text-3xl lg:text-5xl font-bold tracking-tight ${
+          light ? "text-white" : "text-brand-dark"
         }`}
       >
         {title}

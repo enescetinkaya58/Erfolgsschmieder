@@ -1,5 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
+import LogoBar from "@/components/LogoBar";
 import Problem from "@/components/Problem";
 import Leistungen from "@/components/Leistungen";
 import WarumWir from "@/components/WarumWir";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <Nav />
       <Hero />
+      <LogoBar />
       <Problem />
       <Leistungen />
       <WarumWir />

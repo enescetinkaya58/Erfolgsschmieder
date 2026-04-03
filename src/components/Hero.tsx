@@ -1,94 +1,71 @@
+import Image from "next/image";
 import { ArrowRightIcon } from "./icons";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-dark via-blue to-blue-light" />
-      <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full bg-gold/5 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-blue-light/20 blur-3xl" />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
-
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-0 w-full">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-surface">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-32 lg:py-40 w-full">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            {/* Social Proof Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8">
-              <div className="flex -space-x-2">
-                <div className="w-6 h-6 rounded-full bg-gold/80 border-2 border-blue-dark" />
-                <div className="w-6 h-6 rounded-full bg-gold-light/80 border-2 border-blue-dark" />
-                <div className="w-6 h-6 rounded-full bg-gold-dark/80 border-2 border-blue-dark" />
-              </div>
-              <span className="text-xs text-white/70">
-                Bereits <span className="text-gold font-semibold">30+</span>{" "}
-                Unternehmen beraten
-              </span>
-            </div>
+          <div className="text-center lg:text-left">
+            <p className="text-brand font-semibold tracking-widest uppercase text-sm mb-6">
+              Exklusiv für Unternehmer
+            </p>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
-              Ihr Unternehmen wächst –<br />
-              <span className="text-gold">aber Ihr Umsatz nicht?</span>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-brand-dark leading-[1.1] tracking-tight">
+              Ihr Business.
+              <br />
+              <span className="text-brand italic">Ihr Erfolg.</span>
             </h1>
 
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed max-w-xl">
-              Die meisten Mittelständler verlieren Geld durch fehlende
-              Strukturen, unklare Prozesse und verschenkte Potenziale. Wir
-              ändern das – mit einem System, das nachweislich funktioniert.
+            <p className="mt-8 text-lg text-gray-500 max-w-xl leading-relaxed mx-auto lg:mx-0">
+              Maßgeschneiderte Strategien und persönliche Beratung – für
+              mittelständische Unternehmen, die mehr wollen.
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
-                href="#kontakt"
-                className="group inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-blue-dark bg-gold hover:bg-gold-light rounded-full transition-all hover:shadow-xl hover:shadow-gold/25"
+                href="/funnel"
+                className="group inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide uppercase text-white bg-brand-dark hover:bg-brand rounded-full transition-all"
               >
-                Kostenloses Erstgespräch sichern
+                Jetzt starten
                 <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </a>
+              <a
+                href="#leistungen"
+                className="inline-flex items-center justify-center px-8 py-4 text-sm font-semibold tracking-wide uppercase text-brand-dark border border-brand-dark/20 hover:border-brand-dark/40 rounded-full transition-colors"
+              >
+                Mehr erfahren
+              </a>
             </div>
-            <p className="mt-3 text-xs text-white/40">
-              Begrenzte Plätze pro Monat · Unverbindlich · In 30 Sek. gebucht
-            </p>
 
-            <div className="mt-12 flex items-center gap-8 border-t border-white/10 pt-8">
-              {[
-                { value: "360°", label: "Beratungsansatz" },
-                { value: "100%", label: "Umsetzungsfokus" },
-                { value: "Berlin", label: "Standort" },
-              ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-8">
-                  {i > 0 && <div className="w-px h-10 bg-white/10 -ml-8" />}
-                  <div>
-                    <p className="text-2xl font-bold text-gold">{stat.value}</p>
-                    <p className="text-xs text-gray-400">{stat.label}</p>
-                  </div>
-                </div>
-              ))}
+            {/* Trust badge */}
+            <div className="mt-8 flex items-center gap-3 justify-center lg:justify-start">
+              <div className="flex items-center gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4 text-accent" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm text-gray-500">
+                <span className="font-semibold text-brand-dark">50+ Unternehmen</span> vertrauen uns
+              </p>
             </div>
           </div>
 
-          {/* Hero image placeholder */}
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto rounded-2xl bg-gold/20 flex items-center justify-center mb-4">
-                    <span className="text-gold text-3xl font-bold">E</span>
-                  </div>
-                  <p className="text-white/40 text-sm">
-                    Hier kommt dein Hero-Bild hin
-                  </p>
-                  <p className="text-white/20 text-xs mt-1">
-                    /public/images/hero.jpg
-                  </p>
-                </div>
-              </div>
-              <div className="absolute -bottom-4 -left-4 bg-white rounded-2xl p-4 shadow-2xl">
-                <p className="text-xs text-gray-400">Durchschnittlich</p>
-                <p className="text-2xl font-bold text-blue-dark">
-                  +27% <span className="text-sm text-gold">Umsatz</span>
-                </p>
-                <p className="text-xs text-gray-400">
-                  bei unseren Klienten im 1. Jahr
-                </p>
+              <div className="aspect-[4/5] rounded-3xl overflow-hidden">
+                <Image
+                  src="/images/hero.jpg"
+                  alt="Erfolgsschmieder Berlin"
+                  fill
+                  className="object-cover"
+                  priority
+                  quality={100}
+                  unoptimized
+                  sizes="50vw"
+                />
               </div>
             </div>
           </div>
