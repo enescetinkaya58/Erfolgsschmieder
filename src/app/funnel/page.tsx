@@ -183,10 +183,25 @@ export default function FunnelPage() {
     }
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  const [sending, setSending] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    console.log("Funnel answers:", answers);
-    console.log("Contact:", formData);
+    setSending(true);
+
+    try {
+      const res = await fetch("/api/funnel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers, contact: formData }),
+      });
+
+      if (!res.ok) throw new Error("Fehler beim Senden");
+    } catch (err) {
+      console.error(err);
+    }
+
+    setSending(false);
     setSubmitted(true);
   }
 
@@ -414,9 +429,10 @@ export default function FunnelPage() {
                   </button>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold bg-accent text-brand-dark hover:bg-accent-light rounded-xl transition-colors"
+                    disabled={sending}
+                    className="inline-flex items-center justify-center px-10 py-4 text-sm font-bold bg-accent text-brand-dark hover:bg-accent-light rounded-xl transition-colors disabled:opacity-50"
                   >
-                    Kostenloses Erstgespräch sichern
+                    {sending ? "Wird gesendet..." : "Kostenloses Erstgespräch sichern"}
                   </button>
                 </div>
               </form>
