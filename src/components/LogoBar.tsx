@@ -11,8 +11,6 @@ const partners = [
   { name: "Fitomat", logo: "/images/fitomat logo.png", width: 140, height: 60, dark: false },
   { name: "Star Tours", logo: "/images/star-tours-logo.png", width: 160, height: 70, dark: false },
   { name: "Cizgi Rent a Car", logo: "/images/cizgi-logo.webp", width: 160, height: 70, dark: false },
-  { name: "Awen Hotel", logo: "/images/awenhotel-logo.png", width: 160, height: 70, dark: true },
-  { name: "Bex", logo: "/images/bex-logo.webp", width: 160, height: 70, dark: true },
 ];
 
 export default function LogoBar() {
