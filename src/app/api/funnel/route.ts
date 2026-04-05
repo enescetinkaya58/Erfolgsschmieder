@@ -78,7 +78,7 @@ export async function POST(req: Request) {
     // Admin-Mail nicht-blockierend (bounce soll den Flow nicht killen)
     try {
       await getResend().emails.send({
-        from: "Erfolgsschmieder Funnel <funnel@send.erfolgsschmieder.de>",
+        from: "Erfolgsschmieder Funnel <funnel@erfolgsschmieder.de>",
         to: ["info@erfolgsschmieder.de"],
         replyTo: contact.email,
         subject: `Neue Anfrage von ${contact.name}${contact.unternehmen ? ` (${contact.unternehmen})` : ""}`,
@@ -112,7 +112,7 @@ export async function POST(req: Request) {
       `;
 
       const { data: sendResult, error: sendError } = await getResend().emails.send({
-        from: "Enes Cetinkaya <enes@send.erfolgsschmieder.de>",
+        from: "Enes Cetinkaya <enes@erfolgsschmieder.de>",
         to: [contact.email],
         replyTo: "info@erfolgsschmieder.de",
         subject: agentResponse.subject,
@@ -128,7 +128,7 @@ export async function POST(req: Request) {
       await supabaseAdmin().from("conversations").insert({
         lead_id: lead.id,
         direction: "outbound",
-        sender: "enes@send.erfolgsschmieder.de",
+        sender: "enes@erfolgsschmieder.de",
         recipient: contact.email,
         subject: agentResponse.subject,
         body: agentResponse.body,
