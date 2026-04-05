@@ -72,10 +72,14 @@ export async function POST(req: Request) {
     `;
 
     const { error } = await resend.emails.send({
-      from: "Erfolgsschmieder Funnel <funnel@erfolgsschmieder.de>",
+      from: "Erfolgsschmieder Funnel <funnel@ctnsuccess.com>",
       to: ["info@erfolgsschmieder.de"],
+      replyTo: contact.email,
       subject: `Neue Anfrage von ${contact.name}${contact.unternehmen ? ` (${contact.unternehmen})` : ""}`,
       html,
+      headers: {
+        "X-Entity-Ref-ID": `funnel-${Date.now()}`,
+      },
     });
 
     if (error) {
