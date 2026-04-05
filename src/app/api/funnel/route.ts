@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { generateFirstResponse } from "@/lib/agent";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+export const dynamic = "force-dynamic";
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 const STEP_LABELS = [
   "Aktuelle Situation",
@@ -20,7 +24,7 @@ export async function POST(req: Request) {
     const { answers, contact } = await req.json();
 
     // 1. Lead in Datenbank speichern
-    const { data: lead, error: dbError } = await supabaseAdmin
+    const { data: lead, error: dbError } = await supabaseAdmin()
       .from("leads")
       .insert({
         name: contact.name,
@@ -71,7 +75,7 @@ export async function POST(req: Request) {
       </div>
     `;
 
-    await resend.emails.send({
+    await getResend().emails.send({
       from: "Erfolgsschmieder Funnel <funnel@send.erfolgsschmieder.de>",
       to: ["info@erfolgsschmieder.de"],
       replyTo: contact.email,
@@ -102,7 +106,7 @@ export async function POST(req: Request) {
         </div>
       `;
 
-      const { data: sendResult, error: sendError } = await resend.emails.send({
+      const { data: sendResult, error: sendError } = await getResend().emails.send({
         from: "Enes Cetinkaya <enes@send.erfolgsschmieder.de>",
         to: [contact.email],
         replyTo: "info@erfolgsschmieder.de",
@@ -116,7 +120,7 @@ export async function POST(req: Request) {
       }
 
       // 4. Konversation in DB speichern
-      await supabaseAdmin.from("conversations").insert({
+      await supabaseAdmin().from("conversations").insert({
         lead_id: lead.id,
         direction: "outbound",
         sender: "enes@send.erfolgsschmieder.de",
@@ -129,7 +133,7 @@ export async function POST(req: Request) {
     } catch (agentError) {
       console.error("Agent error:", agentError);
       // Lead ist trotzdem gespeichert, Admin ist benachrichtigt
-      await supabaseAdmin
+      await supabaseAdmin()
         .from("leads")
         .update({ status: "awaiting_human" })
         .eq("id", lead.id);

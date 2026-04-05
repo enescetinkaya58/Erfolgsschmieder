@@ -1,8 +1,10 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY!,
-});
+function getAnthropic() {
+  return new Anthropic({
+    apiKey: process.env.ANTHROPIC_API_KEY!,
+  });
+}
 
 const AGENT_MODEL = "claude-opus-4-5";
 
@@ -83,7 +85,7 @@ Format deine Antwort als JSON:
 
 Gib NUR das JSON zurück, keine weiteren Erklärungen.`;
 
-  const response = await anthropic.messages.create({
+  const response = await getAnthropic().messages.create({
     model: AGENT_MODEL,
     max_tokens: 1024,
     system: SYSTEM_PROMPT,
