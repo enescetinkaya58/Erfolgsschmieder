@@ -1,12 +1,12 @@
 import Anthropic from "@anthropic-ai/sdk";
 
 function getAnthropic() {
-  return new Anthropic({
-    apiKey: process.env.ANTHROPIC_API_KEY!,
-  });
+  const apiKey = (process.env.ANTHROPIC_API_KEY || "").trim();
+  if (!apiKey) throw new Error("ANTHROPIC_API_KEY fehlt");
+  return new Anthropic({ apiKey });
 }
 
-const AGENT_MODEL = "claude-opus-4-5";
+const AGENT_MODEL = "claude-sonnet-4-6";
 
 const SYSTEM_PROMPT = `Du bist der persönliche Assistent von Enes Cetinkaya, Geschäftsführer der Erfolgsschmieder Berlin – einer 360°-Unternehmensberatung für den deutschen Mittelstand.
 

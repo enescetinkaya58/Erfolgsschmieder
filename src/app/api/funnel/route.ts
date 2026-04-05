@@ -6,7 +6,7 @@ import { generateFirstResponse } from "@/lib/agent";
 export const dynamic = "force-dynamic";
 
 function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
+  return new Resend((process.env.RESEND_API_KEY || "").trim());
 }
 
 const STEP_LABELS = [
@@ -75,13 +75,18 @@ export async function POST(req: Request) {
       </div>
     `;
 
-    await getResend().emails.send({
-      from: "Erfolgsschmieder Funnel <funnel@send.erfolgsschmieder.de>",
-      to: ["info@erfolgsschmieder.de"],
-      replyTo: contact.email,
-      subject: `Neue Anfrage von ${contact.name}${contact.unternehmen ? ` (${contact.unternehmen})` : ""}`,
-      html: adminHtml,
-    });
+    // Admin-Mail nicht-blockierend (bounce soll den Flow nicht killen)
+    try {
+      await getResend().emails.send({
+        from: "Erfolgsschmieder Funnel <funnel@send.erfolgsschmieder.de>",
+        to: ["info@erfolgsschmieder.de"],
+        replyTo: contact.email,
+        subject: `Neue Anfrage von ${contact.name}${contact.unternehmen ? ` (${contact.unternehmen})` : ""}`,
+        html: adminHtml,
+      });
+    } catch (adminMailError) {
+      console.error("Admin mail error (non-blocking):", adminMailError);
+    }
 
     // 3. Agent generiert persönliche erste Antwort an den Lead
     try {
