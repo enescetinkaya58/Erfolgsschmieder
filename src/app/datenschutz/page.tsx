@@ -44,9 +44,9 @@ export default function Datenschutz() {
                 <br />
                 Enes Cetinkaya (Geschäftsführer)
                 <br />
-                Spielhagenstraße 7
+                Frohnauer Str. 3
                 <br />
-                10585 Berlin, Deutschland
+                13467 Berlin, Deutschland
                 <br />
 Telefon: 030 1210 8372
                 <br />

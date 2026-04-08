@@ -19,9 +19,9 @@ export default function Impressum() {
               <p>
                 CTN Immobilien und Versicherung GmbH
                 <br />
-                Spielhagenstraße 7
+                Frohnauer Str. 3
                 <br />
-                10585 Berlin, Deutschland
+                13467 Berlin, Deutschland
               </p>
               <p>
                 <strong>Vertreten durch:</strong>
@@ -71,9 +71,9 @@ export default function Impressum() {
               <p>
                 Enes Cetinkaya
                 <br />
-                Spielhagenstraße 7
+                Frohnauer Str. 3
                 <br />
-                10585 Berlin, Deutschland
+                13467 Berlin, Deutschland
               </p>
             </section>
 

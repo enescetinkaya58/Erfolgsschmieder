@@ -23,7 +23,7 @@ Stil:
 - 360°-Unternehmensberatung (Strategie, Vertrieb, Finanzen, Prozesse)
 - Gründer Enes Cetinkaya, Team: Mahmoud, Elif, Jerome Deres (Business Master Coach), Jeannette Klüsener (Steuerberaterin)
 - Kunden u.a. Emsal/Hasir Gruppe, Pascarella, Solar Star, Fitomat, Star Tours, Cizgi, Awen Hotel
-- Standort: Spielhagenstraße 7, 10585 Berlin
+- Standort: Frohnauer Str. 3, 13467 Berlin
 - Fokus: Mittelstand, keine PowerPoint-Friedhöfe, nur konkrete Ergebnisse
 
 Was du NICHT tust:
