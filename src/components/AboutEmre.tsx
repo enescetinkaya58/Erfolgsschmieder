@@ -9,10 +9,42 @@ const credentials = [
   "Experte für Versicherung, Immobilien & Skalierung",
 ];
 
+const team = [
+  {
+    name: "Jerome Deres",
+    role: "Business Master Coach & Strategieberater",
+    image: "/images/team-jerome.jpg",
+    description:
+      "Coach, Speaker und Trainer mit Fokus auf Clarity, Leadership und Scale. Jerome begleitet Unternehmer auf dem Weg zu souveräner Selbstführung – die Klarheit und Entscheidungsstärke, die daraus entsteht, führt direkt zu messbaren Leistungsverbesserungen und nachhaltigem Wachstum.",
+  },
+  {
+    name: "Jeannette Klüsener",
+    role: "Dipl.-Finw. (FH) · Steuerberaterin",
+    image: "/images/team-jeannette.jpg",
+    description:
+      "Erfahrene Steuerberaterin mit umfassender Expertise in Bilanzen, Jahresabschlüssen, Existenzgründung und steuerlicher Optimierung. Jeannette sorgt dafür, dass Ihre finanziellen Lösungen stets auf dem neuesten Stand und absolut zuverlässig sind.",
+  },
+];
+
 export default function AboutEmre() {
   return (
-    <section id="ueber-emre" className="py-20 lg:py-28 bg-surface">
+    <section id="ueber-uns" className="py-20 lg:py-28 bg-surface">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        {/* Section heading */}
+        <div className="max-w-3xl text-center mx-auto mb-16">
+          <p className="text-brand font-semibold tracking-widest uppercase text-sm mb-3">
+            Über uns
+          </p>
+          <h2 className="font-serif text-3xl lg:text-5xl font-bold tracking-tight text-brand-dark">
+            Die Menschen hinter Erfolgsschmieder
+          </h2>
+          <p className="mt-4 text-lg text-gray-500">
+            Erfahrene Unternehmer, Coaches und Experten – vereint durch eine
+            gemeinsame Mission: Ihren Erfolg.
+          </p>
+        </div>
+
+        {/* Emre – Gründerprofil */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Foto */}
           <div className="relative">
@@ -48,14 +80,14 @@ export default function AboutEmre() {
 
           {/* Text */}
           <div>
-            <p className="text-brand font-semibold tracking-widest uppercase text-sm mb-3">
-              Ihr Berater
+            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">
+              Gründer & Geschäftsführer
             </p>
-            <h2 className="font-serif text-3xl lg:text-4xl font-bold text-brand-dark tracking-tight leading-tight">
+            <h3 className="font-serif text-3xl lg:text-4xl font-bold text-brand-dark tracking-tight leading-tight">
               Emre Enes Cetinkaya
-            </h2>
+            </h3>
             <p className="mt-2 text-brand font-medium">
-              Gründer &amp; Geschäftsführer, Erfolgsschmieder Berlin
+              Erfolgsschmieder Berlin
             </p>
 
             <div className="mt-8 space-y-4 text-gray-600 leading-relaxed">
@@ -103,6 +135,50 @@ export default function AboutEmre() {
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Team-Mitglieder */}
+        <div className="mt-28">
+          <div className="text-center mb-12">
+            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">
+              Unser Team
+            </p>
+            <h3 className="font-serif text-2xl lg:text-3xl font-bold text-brand-dark tracking-tight">
+              Die Experten an Ihrer Seite
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {team.map((member) => (
+              <div
+                key={member.name}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+              >
+                <div className="aspect-[4/5] relative overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                    quality={100}
+                    unoptimized
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="text-lg font-bold text-brand-dark">
+                    {member.name}
+                  </h4>
+                  <p className="text-sm text-brand font-medium mt-1">
+                    {member.role}
+                  </p>
+                  <p className="mt-3 text-sm text-gray-500 leading-relaxed">
+                    {member.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
