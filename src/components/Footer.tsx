@@ -39,7 +39,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#ueber-emre" className="text-sm text-gray-500 hover:text-white transition-colors">
+                <a href="#ueber-uns" className="text-sm text-gray-500 hover:text-white transition-colors">
                   Über uns
                 </a>
               </li>
