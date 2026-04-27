@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
 
 export function ProgressBar({
@@ -12,12 +13,12 @@ export function ProgressBar({
   return (
     <div className="w-full bg-white/5 sticky top-0 z-10 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
-        <a
+        <Link
           href="/"
           className="text-accent font-bold text-lg tracking-wide hover:text-accent-light transition-colors"
         >
           ERFOLGSSCHMIEDER
-        </a>
+        </Link>
         <span className="text-xs text-gray-500 tracking-widest uppercase tabular-nums">
           {label}
         </span>

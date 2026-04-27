@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { ProgressBar } from "@/components/funnel/ProgressBar";
 
@@ -107,12 +108,12 @@ export default function FunnelPage() {
             Wir haben Ihre Angaben erhalten und melden uns innerhalb von 24
             Stunden persönlich bei Ihnen.
           </p>
-          <a
+          <Link
             href="/"
             className="mt-10 inline-flex items-center justify-center px-8 py-4 text-sm font-bold text-brand-dark bg-accent hover:bg-accent-light rounded-xl transition-colors"
           >
             Zurück zur Startseite
-          </a>
+          </Link>
         </motion.div>
       </div>
     );
