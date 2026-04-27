@@ -1,4 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
+import { STEP_LABELS_DE } from "@/components/funnel/questions";
 
 function getAnthropic() {
   const apiKey = (process.env.ANTHROPIC_API_KEY || "").trim();
@@ -39,9 +40,11 @@ export interface FunnelData {
   telefon?: string;
   nachricht?: string;
   funnel_answers: Record<string, string[]>;
+  funnel_path?: string;
 }
 
-const STEP_LABELS = [
+// Legacy-Labels (alte Leads mit numerischen Keys "0".."6")
+const LEGACY_STEP_LABELS = [
   "Aktuelle Situation",
   "Bereiche für Unterstützung",
   "Unternehmensgröße",
@@ -51,11 +54,25 @@ const STEP_LABELS = [
   "Gewünschter Zeitplan",
 ];
 
+const PATH_LABELS_AGENT: Record<string, string> = {
+  strategy: "Strategische Beratung",
+  process: "Prozessoptimierung",
+  founding: "Neugründung",
+  scaling: "Skalierung",
+};
+
+function labelForKey(key: string): string {
+  if (/^\d+$/.test(key)) {
+    return LEGACY_STEP_LABELS[Number(key)] ?? `Frage ${Number(key) + 1}`;
+  }
+  return STEP_LABELS_DE[key] ?? key;
+}
+
 function formatAnswersForPrompt(answers: Record<string, string[]>): string {
   return Object.entries(answers)
-    .map(([step, values]) => {
-      const label = STEP_LABELS[Number(step)] || `Frage ${Number(step) + 1}`;
-      return `- ${label}: ${values.join(", ")}`;
+    .filter(([key]) => !key.startsWith("_"))
+    .map(([key, values]) => {
+      return `- ${labelForKey(key)}: ${values.join(", ")}`;
     })
     .join("\n");
 }
@@ -64,13 +81,16 @@ export async function generateFirstResponse(
   lead: FunnelData
 ): Promise<{ subject: string; body: string }> {
   const answersText = formatAnswersForPrompt(lead.funnel_answers);
+  const pathLine = lead.funnel_path && PATH_LABELS_AGENT[lead.funnel_path]
+    ? `Pfad/Anliegen: ${PATH_LABELS_AGENT[lead.funnel_path]}\n`
+    : "";
 
   const prompt = `Ein neuer Interessent hat den Funnel ausgefüllt. Hier die Daten:
 
 Name: ${lead.name}
 Unternehmen: ${lead.unternehmen || "–"}
 E-Mail: ${lead.email}
-${lead.nachricht ? `Eigene Nachricht: "${lead.nachricht}"` : ""}
+${pathLine}${lead.nachricht ? `Eigene Nachricht: "${lead.nachricht}"` : ""}
 
 Funnel-Antworten:
 ${answersText}

@@ -2,6 +2,7 @@ import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
 import { generateFirstResponse } from "@/lib/agent";
+import { STEP_LABELS_DE } from "@/components/funnel/questions";
 
 export const dynamic = "force-dynamic";
 
@@ -9,7 +10,8 @@ function getResend() {
   return new Resend((process.env.RESEND_API_KEY || "").trim());
 }
 
-const STEP_LABELS = [
+// Legacy-Labels (alte Leads mit numerischen Keys "0".."6")
+const LEGACY_STEP_LABELS = [
   "Aktuelle Situation",
   "Bereiche",
   "Unternehmensgröße",
@@ -19,9 +21,33 @@ const STEP_LABELS = [
   "Zeitplan",
 ];
 
+function labelForKey(key: string): string {
+  if (/^\d+$/.test(key)) {
+    return LEGACY_STEP_LABELS[Number(key)] ?? `Frage ${Number(key) + 1}`;
+  }
+  return STEP_LABELS_DE[key] ?? key;
+}
+
+const PATH_LABELS: Record<string, string> = {
+  strategy: "Strategische Beratung",
+  process: "Prozesse verbessern",
+  founding: "Neugründung",
+  scaling: "Skalieren",
+};
+
 export async function POST(req: Request) {
   try {
-    const { answers, contact } = await req.json();
+    const { answers, contact, path, consent } = await req.json();
+
+    // Pfad und Consent als Meta-Properties in funnel_answers speichern
+    // (jsonb erlaubt schemalose Erweiterung – alte Leads bleiben gültig)
+    const enrichedAnswers = {
+      ...answers,
+      ...(path ? { _path: path } : {}),
+      ...(consent?.given_at
+        ? { _consent_given_at: consent.given_at }
+        : {}),
+    };
 
     // 1. Lead in Datenbank speichern
     const { data: lead, error: dbError } = await supabaseAdmin()
@@ -32,7 +58,7 @@ export async function POST(req: Request) {
         email: contact.email,
         telefon: contact.telefon || null,
         nachricht: contact.nachricht || null,
-        funnel_answers: answers,
+        funnel_answers: enrichedAnswers,
         status: "in_progress",
       })
       .select()
@@ -45,14 +71,24 @@ export async function POST(req: Request) {
 
     // 2. Admin-Benachrichtigung an Enes
     const answersHtml = Object.entries(answers)
+      .filter(([key]) => !key.startsWith("_"))
       .map(
-        ([step, values]) =>
+        ([key, values]) =>
           `<tr>
-            <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;vertical-align:top;">${STEP_LABELS[Number(step)] || `Frage ${Number(step) + 1}`}</td>
+            <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;vertical-align:top;">${labelForKey(key)}</td>
             <td style="padding:8px 12px;border-bottom:1px solid #eee;">${(values as string[]).join(", ")}</td>
           </tr>`
       )
       .join("");
+
+    const pathLabel = path && PATH_LABELS[path] ? PATH_LABELS[path] : null;
+    const pathRowHtml = pathLabel
+      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#c9a84c;vertical-align:top;">Pfad</td><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;">${pathLabel}</td></tr>`
+      : "";
+
+    const consentRowHtml = consent?.given_at
+      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">DSGVO-Einwilligung</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">Erteilt am ${new Date(consent.given_at).toLocaleString("de-DE")}</td></tr>`
+      : "";
 
     const adminHtml = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
@@ -68,9 +104,10 @@ export async function POST(req: Request) {
             <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">E-Mail</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${contact.email}">${contact.email}</a></td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Telefon</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="tel:${contact.telefon}">${contact.telefon}</a></td></tr>
             <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Nachricht</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.nachricht || "–"}</td></tr>
+            ${consentRowHtml}
           </table>
           <h2 style="color:#1e3a5f;font-size:16px;margin:24px 0 16px;">Funnel-Antworten</h2>
-          <table style="width:100%;border-collapse:collapse;">${answersHtml}</table>
+          <table style="width:100%;border-collapse:collapse;">${pathRowHtml}${answersHtml}</table>
         </div>
       </div>
     `;
@@ -97,6 +134,7 @@ export async function POST(req: Request) {
         telefon: contact.telefon,
         nachricht: contact.nachricht,
         funnel_answers: answers,
+        funnel_path: path,
       });
 
       // HTML-Version mit Zeilenumbrüchen
