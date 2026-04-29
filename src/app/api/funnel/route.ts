@@ -75,7 +75,7 @@ export async function POST(req: Request) {
       .map(
         ([key, values]) =>
           `<tr>
-            <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;vertical-align:top;">${labelForKey(key)}</td>
+            <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;vertical-align:top;">${labelForKey(key)}</td>
             <td style="padding:8px 12px;border-bottom:1px solid #eee;">${(values as string[]).join(", ")}</td>
           </tr>`
       )
@@ -83,30 +83,30 @@ export async function POST(req: Request) {
 
     const pathLabel = path && PATH_LABELS[path] ? PATH_LABELS[path] : null;
     const pathRowHtml = pathLabel
-      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#c9a84c;vertical-align:top;">Pfad</td><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;">${pathLabel}</td></tr>`
+      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#007a45;vertical-align:top;">Pfad</td><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;">${pathLabel}</td></tr>`
       : "";
 
     const consentRowHtml = consent?.given_at
-      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">DSGVO-Einwilligung</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">Erteilt am ${new Date(consent.given_at).toLocaleString("de-DE")}</td></tr>`
+      ? `<tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">DSGVO-Einwilligung</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">Erteilt am ${new Date(consent.given_at).toLocaleString("de-DE")}</td></tr>`
       : "";
 
     const adminHtml = `
       <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
-        <div style="background:#1e3a5f;padding:24px;border-radius:12px 12px 0 0;">
-          <h1 style="color:#c9a84c;margin:0;font-size:22px;">Neue Funnel-Anfrage</h1>
+        <div style="background:#006039;padding:24px;border-radius:12px 12px 0 0;">
+          <h1 style="color:#007a45;margin:0;font-size:22px;">Neue Funnel-Anfrage</h1>
           <p style="color:rgba(255,255,255,0.7);margin:8px 0 0;">Der Agent übernimmt automatisch die erste Antwort</p>
         </div>
         <div style="background:#fff;padding:24px;border:1px solid #eee;">
-          <h2 style="color:#1e3a5f;font-size:16px;margin:0 0 16px;">Kontaktdaten</h2>
+          <h2 style="color:#006039;font-size:16px;margin:0 0 16px;">Kontaktdaten</h2>
           <table style="width:100%;border-collapse:collapse;">
-            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Name</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.name}</td></tr>
-            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Unternehmen</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.unternehmen || "–"}</td></tr>
-            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">E-Mail</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${contact.email}">${contact.email}</a></td></tr>
-            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Telefon</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="tel:${contact.telefon}">${contact.telefon}</a></td></tr>
-            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#1e3a5f;">Nachricht</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.nachricht || "–"}</td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">Name</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.name}</td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">Unternehmen</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.unternehmen || "–"}</td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">E-Mail</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="mailto:${contact.email}">${contact.email}</a></td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">Telefon</td><td style="padding:8px 12px;border-bottom:1px solid #eee;"><a href="tel:${contact.telefon}">${contact.telefon}</a></td></tr>
+            <tr><td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600;color:#006039;">Nachricht</td><td style="padding:8px 12px;border-bottom:1px solid #eee;">${contact.nachricht || "–"}</td></tr>
             ${consentRowHtml}
           </table>
-          <h2 style="color:#1e3a5f;font-size:16px;margin:24px 0 16px;">Funnel-Antworten</h2>
+          <h2 style="color:#006039;font-size:16px;margin:24px 0 16px;">Funnel-Antworten</h2>
           <table style="width:100%;border-collapse:collapse;">${pathRowHtml}${answersHtml}</table>
         </div>
       </div>
