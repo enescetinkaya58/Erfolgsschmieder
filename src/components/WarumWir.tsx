@@ -23,7 +23,7 @@ export default function WarumWir() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">
-            Warum Erfolgsschmieder
+            Warum CTN Schmiede
           </p>
           <h2 className="font-serif text-3xl lg:text-4xl font-bold text-white tracking-tight leading-tight">
             Wir liefern keine PowerPoint-Friedhöfe.

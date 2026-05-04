@@ -1,18 +1,30 @@
 import Image from "next/image";
 
-export default function BrandLogo({ textClass = "text-white" }: { textClass?: string }) {
+type Variant = "dark" | "light";
+
+export default function BrandLogo({
+  variant = "dark",
+  height = 48,
+}: {
+  variant?: Variant;
+  height?: number;
+}) {
+  const src =
+    variant === "light"
+      ? "/ctn-schmiede-logo-light.svg"
+      : "/ctn-schmiede-logo.svg";
+
+  // Logo aspect ratio = 760 / 220 ≈ 3.4545
+  const width = Math.round(height * (760 / 220));
+
   return (
-    <div className="flex items-center gap-3">
-      <Image
-        src="/images/Erfolgsschmieder logo.jpg"
-        alt="Erfolgsschmieder"
-        width={40}
-        height={40}
-        className="rounded-lg object-cover"
-      />
-      <span className={`font-bold text-lg tracking-tight ${textClass}`}>
-        Erfolgsschmieder
-      </span>
-    </div>
+    <Image
+      src={src}
+      alt="CTN Schmiede · Unternehmensberatung Berlin"
+      width={width}
+      height={height}
+      priority
+      className="block"
+    />
   );
 }

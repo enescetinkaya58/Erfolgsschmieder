@@ -115,7 +115,7 @@ export async function POST(req: Request) {
     // Admin-Mail nicht-blockierend (bounce soll den Flow nicht killen)
     try {
       await getResend().emails.send({
-        from: "Erfolgsschmieder Funnel <funnel@erfolgsschmieder.de>",
+        from: "CTN Schmiede Funnel <funnel@erfolgsschmieder.de>",
         to: ["info@erfolgsschmieder.de"],
         replyTo: contact.email,
         subject: `Neue Anfrage von ${contact.name}${contact.unternehmen ? ` (${contact.unternehmen})` : ""}`,

@@ -23,8 +23,8 @@ export default function Nav() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="/">
-            <BrandLogo textClass={scrolled ? "text-brand-dark" : "text-brand-dark"} />
+          <a href="/" aria-label="CTN Schmiede Startseite">
+            <BrandLogo variant="dark" height={52} />
           </a>
 
           <div className="hidden md:flex items-center gap-5">

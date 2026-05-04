@@ -17,7 +17,7 @@ export function ProgressBar({
           href="/"
           className="text-accent font-bold text-lg tracking-wide hover:text-accent-light transition-colors"
         >
-          ERFOLGSSCHMIEDER
+          CTN SCHMIEDE
         </Link>
         <span className="text-xs text-gray-500 tracking-widest uppercase tabular-nums">
           {label}

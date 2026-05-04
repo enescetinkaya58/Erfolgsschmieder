@@ -6,8 +6,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12">
           <div>
-            <div className="mb-4">
-              <BrandLogo />
+            <div className="mb-6">
+              <BrandLogo variant="light" height={64} />
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">
               360°-Unternehmensberatung
@@ -84,7 +84,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-600">
-            © {new Date().getFullYear()} Erfolgsschmieder Berlin. Alle Rechte vorbehalten.
+            © {new Date().getFullYear()} CTN Schmiede Berlin. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6">
             <a href="/impressum" className="text-xs text-gray-600 hover:text-gray-400 transition-colors">Impressum</a>

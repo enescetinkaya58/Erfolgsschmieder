@@ -78,7 +78,7 @@ export default function Hero() {
               <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative">
                 <Image
                   src="/images/A_candid_authentic_low-angle_s_Nano_Banana_2_93549.jpg"
-                  alt="Erfolgsschmieder Berlin – Unternehmensberatung"
+                  alt="CTN Schmiede Berlin – Unternehmensberatung"
                   fill
                   className="object-cover"
                   priority

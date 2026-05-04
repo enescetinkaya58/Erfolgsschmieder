@@ -4,7 +4,7 @@ import { StarIcon } from "./icons";
 const testimonials = [
   {
     quote:
-      "Erfolgsschmieder hat in 3 Monaten mehr bewegt als unsere letzte Beratung in einem Jahr. Konkret, direkt, wirksam.",
+      "In 3 Monaten mehr bewegt als unsere letzte Beratung in einem Jahr. Konkret, direkt, wirksam.",
     name: "Geschäftsführung",
     company: "Emsal Gruppe",
   },

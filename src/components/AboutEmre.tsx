@@ -36,7 +36,7 @@ export default function AboutEmre() {
             Über uns
           </p>
           <h2 className="font-serif text-3xl lg:text-5xl font-bold tracking-tight text-brand-dark">
-            Die Menschen hinter Erfolgsschmieder
+            Die Menschen hinter CTN Schmiede
           </h2>
           <p className="mt-4 text-lg text-gray-500">
             Erfahrene Unternehmer, Coaches und Experten – vereint durch eine
@@ -51,7 +51,7 @@ export default function AboutEmre() {
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-xl">
               <Image
                 src="/images/hero.jpg"
-                alt="Emre Enes Cetinkaya – Gründer von Erfolgsschmieder Berlin"
+                alt="Emre Enes Cetinkaya – Gründer der CTN Schmiede Berlin"
                 fill
                 className="object-cover object-top"
                 quality={100}
@@ -87,7 +87,7 @@ export default function AboutEmre() {
               Emre Enes Cetinkaya
             </h3>
             <p className="mt-2 text-brand font-medium">
-              Erfolgsschmieder Berlin
+              CTN Schmiede Berlin
             </p>
 
             <div className="mt-8 space-y-4 text-gray-600 leading-relaxed">
@@ -106,7 +106,7 @@ export default function AboutEmre() {
                 beschreiben.
               </p>
               <p>
-                Erfolgsschmieder ist aus einer einfachen Überzeugung entstanden:
+                Die CTN Schmiede ist aus einer einfachen Überzeugung entstanden:
                 Unternehmer brauchen keine PowerPoint-Berater, die analysieren
                 und dann verschwinden. Sie brauchen jemanden, der{" "}
                 <span className="text-brand-dark font-semibold">

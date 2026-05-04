@@ -14,7 +14,7 @@ const faqs = [
       'Weil wir keine PowerPoint-Friedhöfe liefern. Viele Berater analysieren wochenlang und übergeben dann einen Bericht, den keiner umsetzt. Bei uns ist das anders: Wir packen mit an, setzen gemeinsam um und messen die Ergebnisse. Wenn es nicht funktioniert, passen wir sofort an. Unser Testimonial von der Emsal Gruppe sagt es am besten: „In 3 Monaten mehr bewegt als die letzte Beratung in einem Jahr."',
   },
   {
-    question: "Für wen ist Erfolgsschmieder geeignet?",
+    question: "Für wen ist die CTN Schmiede geeignet?",
     answer:
       "Für mittelständische Unternehmer und Geschäftsführer, die wachsen wollen, aber das Gefühl haben, auf der Stelle zu treten. Besonders gut können wir helfen, wenn Sie in der Gastronomie, im Handwerk, im Dienstleistungsbereich oder in der Energiebranche tätig sind. Aber auch Unternehmen aus anderen Branchen profitieren von unserer 360°-Beratung.",
   },

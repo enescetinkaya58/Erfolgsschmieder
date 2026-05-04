@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="760" height="220">
+  <g transform="translate(15,15)">
+    <g transform="translate(95,95)">
+      <circle r="92" fill="none" stroke="#0A0A0B" stroke-width="1.2"/>
+      <circle r="86" fill="none" stroke="#0A0A0B" stroke-width="0.5" opacity="0.35"/>
+      <rect x="-1.6" y="-66" width="3.2" height="132" fill="#0A0A0B"/>
+      <rect x="-66" y="-1.6" width="132" height="3.2" fill="#0A0A0B"/>
+      <rect x="-1.1" y="-48" width="2.2" height="96" fill="#0A0A0B" transform="rotate(45)" opacity="0.6"/>
+      <rect x="-1.1" y="-48" width="2.2" height="96" fill="#0A0A0B" transform="rotate(-45)" opacity="0.6"/>
+      <circle r="7" fill="#0A0A0B"/>
+      <circle r="3.4" fill="#FAF8F2"/>
+      <circle cx="0" cy="-66" r="3.4" fill="#0A0A0B"/>
+    </g>
+  </g>
+  <g transform="translate(245,0)">
+    <text x="0" y="105" font-family="Cormorant Garamond, serif" font-weight="500" font-size="64" fill="#0A0A0B">CTN Schmiede</text>
+    <line x1="0" y1="124" x2="380" y2="124" stroke="#0A0A0B" stroke-width="0.7" opacity="0.45"/>
+    <text x="0" y="156" font-family="Inter, sans-serif" font-weight="500" font-size="13" letter-spacing="0.34em" fill="#52525B">UNTERNEHMENSBERATUNG · BERLIN</text>
+  </g>
+</svg>

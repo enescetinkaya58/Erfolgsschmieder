@@ -15,7 +15,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Erfolgsschmieder Berlin – Unternehmensberatung für den Mittelstand",
+  title: "CTN Schmiede Berlin – Unternehmensberatung für den Mittelstand",
   description:
     "360°-Beratung für mittelständische Unternehmen. Strategie, Digitalisierung, Wachstum – aus Berlin.",
 };
